@@ -3,12 +3,28 @@ import handImg from "../Assets/hand.png"
 import OtpInput from "react-otp-input";
 import { useState } from 'react';
 import './Otp.css'
+import api from '../Api/Api'
 
 
-const Otp = ({number, navigate, setNumber}) => {
 
-  
+const Otp = ({number, navigate, setNumber, response}) => {
 
+
+  const handleClick=async()=>{
+    try{
+      const obj = {
+        countryCode: "+91",
+        phoneNumber: number.substring(number.length-10),    
+        otp :otp  
+      }
+      const data = await api.post('/api/verify', obj)
+      console.log(data.data);
+      navigate('/success')
+    }
+    catch(err){
+      console.log(`Error: ${err.message}`);
+    }
+  }
   const [otp, setOtp] = useState('');
   return (
     <div className="app-body">
@@ -52,7 +68,7 @@ const Otp = ({number, navigate, setNumber}) => {
       <span> Re-send</span>
     </p>
     <button className="submit-button" onClick={()=>{
-      navigate("/success")
+      handleClick();
     }}>
       Verify
     </button>

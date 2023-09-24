@@ -10,7 +10,7 @@ import api from './Api/Api'
 function App() {
 
   const [number, setNumber] = useState('');
-  
+  const [response, setResponse]=  useState('');
   const navigate = useNavigate();
 
   return (
@@ -18,8 +18,8 @@ function App() {
     <div className="App">
       
       <Routes>
-        <Route path = "/" element={<SignUp number={number} setNumber={setNumber} navigate={navigate}/>}/>
-        <Route path = "/otp" element={<Otp number={number} navigate={navigate} setNumber={setNumber}/>}/>
+        <Route path = "/" element={<SignUp number={number} setNumber={setNumber} navigate={navigate} response={response} setResponse={setResponse}/>}/>
+        <Route path = "/otp" element={<Otp number={number} navigate={navigate} setNumber={setNumber} response={response}/>}/>
         <Route path = "/success" element={<Success/>}/>
       </Routes>
     </div>
