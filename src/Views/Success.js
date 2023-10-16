@@ -8,7 +8,7 @@ const Success = () => {
   return (
     <div className="app-body">
     <img className="art-image" src={artboard} alt="Art"></img>
-    <h3 className="heading">Welcome to AdmitKard</h3>
+    <h3 className="heading">Welcome to our App</h3>
     <p className="description">
       In order to provide you with<br></br> a custom experience,<br></br>
       <span>we need to ask you a few questions.</span>

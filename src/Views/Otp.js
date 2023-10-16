@@ -7,16 +7,19 @@ import api from '../Api/Api'
 
 
 
-const Otp = ({number, navigate, setNumber, response}) => {
+
+const Otp = ({number, navigate, setNumber}) => {
 
 
   const handleClick=async()=>{
     try{
+      
       const obj = {
         countryCode: "+91",
         phoneNumber: number.substring(number.length-10),    
-        otp :otp  
+        otp 
       }
+      console.log(obj)
       const data = await api.post('/api/verify', obj)
       console.log(data.data);
       navigate('/success')

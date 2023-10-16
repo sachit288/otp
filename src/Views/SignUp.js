@@ -1,15 +1,14 @@
 import React from 'react'
 import styles from './SignUp.css'
-import applogo from "../Assets/AK_logo.png"
+import applogo from "../Assets/Login.jpg"
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
 import api from '../Api/Api'
-import { useEffect } from 'react';
 
 
 
 
-const SignUp = ({number, setNumber, navigate, response, setResponse}) => {
+const SignUp = ({number, setNumber, navigate}) => {
 
 
   const handleClick=async()=>{
@@ -19,8 +18,9 @@ const SignUp = ({number, setNumber, navigate, response, setResponse}) => {
         phoneNumber: number.substring(number.length-10)
       }
       const data = await api.post('/api/signin', obj)
-      setResponse(data.data)
-      alert(response.data.otp);
+      console.log(data)
+      
+      alert(data.data.data.otp);
       navigate('/otp')
     }
     catch(err){
